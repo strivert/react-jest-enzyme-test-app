@@ -1,21 +1,26 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import NameForm from './NameForm';
 
 describe('NameForm', () => {
   let component = null;
 
   it('renders correctly', () => {
-    component = renderer.create(<NameForm />);
-    /*
-    Create a TestRenderer instance with the passed React element.
-    It doesn’t use the real DOM, but it still fully renders the component tree into memory so you can make assertions about it.
-    The returned instance has the following methods and properties.
-    */
+    component = shallow(<NameForm />);
   });
 
   it('matches snapshot', () => {
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
+  });
+
+  describe('insert new text', ()=>{
+    it('has a form', ()=>{
+      expect(component.find('form').exists()).toBe(true);
+    });
+
+    it('has an input', ()=>{
+      expect(component.find('input').exists()).toBe(true);
+    });
+
   });
 });
