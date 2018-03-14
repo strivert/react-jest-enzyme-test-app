@@ -1,15 +1,15 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './App';
+import NameList from './NameList';
 
-describe('App', ()=>{
+describe('NameList', ()=>{
   let component = null;
-  
+
   it('renders correctly', ()=>{
-    component = renderer.create(<App />);
+    component = renderer.create(<NameList />);
   });
 
-  it('matches snapshot', () => {
+  it('matches snapshot', ()=>{
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
